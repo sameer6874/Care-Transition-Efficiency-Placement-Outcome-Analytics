@@ -34,10 +34,7 @@ def load_and_clean_data(file_path):
     # Clean and type conversion
     for key, col in cols.items():
         if key != 'date':
-            if df[col].dtype == 'object':
-                df[col] = df[col].astype(str).str.replace(',', '').replace('nan', '0').astype(float)
-            else:
-                df[col] = df[col].fillna(0)
+            df[col] = pd.to_numeric(df[col].astype(str).str.replace(',', '', regex=False), errors='coerce').fillna(0)
                 
     df[cols['date']] = pd.to_datetime(df[cols['date']], errors='coerce')
     df = df.dropna(subset=[cols['date']]).sort_values(cols['date'])
