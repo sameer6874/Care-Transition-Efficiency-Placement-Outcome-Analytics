@@ -52,7 +52,7 @@ def load_and_clean_data(file_path):
     return df, cols
 
 try:
-    file_path = r"C:\Users\samee\Downloads\HHS_Unaccompanied_Alien_Children_Program.csv"
+    file_path = "HHS_Unaccompanied_Alien_Children_Program.csv"
     data, cols = load_and_clean_data(file_path)
 except Exception as e:
     st.error(f"System Error: Unable to interface with dataset. {e}")
